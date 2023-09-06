@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <title>Academia</title>
+</head>
+<body>
+
+   <!-- === Inicio Navbar === -->
+   <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="index.html">Inicio</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+               <li class="nav-item">
+                  <a class="nav-link" href="casaMoneda.html">Casa de Moneda</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="academia.html">Academia</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="miniCine.html">Mini Cine</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="abasto.html">Abasto</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <!-- === Fin Navbar === -->
+
+   <h2 class="text-center m-4">Academia - ¿Cómo funciona?</h2>
+
+   <!-- ========== Inicio Instrucciones ========== -->
+   <div class="container">
+      <div class="row ">
+         <div class="col-lg-12 text-start">
+            <p>La Academia imparte tres cursos <b>(Programación, Matemáticas e Inglés)</b>, cada uno de los cursos tiene su costo y su cantidad maxima de aspirantes <b>(que es 5)</b>. Los aspirantes a cada curso pueden ser becados o no, si estos son becados se le descuenta el 50% del costo del curso.</p>
+            <p>Al inscribir un aspirante, se le pedirán los datos correspondientes <b>(ID, nombre, si es becado o no, ID del curso que se quiere inscribir). </b>Al efectuar esta operación el programa registrará al aspirante en la tabla si todos los datos fueron correctos. Si alguno de estos datos no se proporciona correctamente, el programa se lo hará saber.</p>
+            <p>El Usuario puede inscribir y eliminar cuantos aspirantes quiera. Para agregar solo debe precionar <i class="fa-solid fa-user-plus"></i>. Para eliminar un cliente debe precionar <i class="fa-solid fa-trash"></i> y proporcionar el id del mismo. En la tabla derecha se puede visualizar los registros de los aspirantes, y en la izquierda los cupos disponibles y estudiantes inscritos en cada curso. A demás de visualizar el total que se descontó entre todos los estudiantes becados</p>
+         </div>
+      </div>
+   </div>
+   <!-- ========== Fin Instrucciones ========== -->
+
+   <!-- ========== Inicio Tablas ========== -->
+   <div class="container text-center">
+
+      <div class="row">
+         <!-- ========== Inicio Tabla Cursos ========== -->
+         <div class="col-lg-5">
+            <table class="table table-light table-striped-columns table-bordered">
+               <thead>
+                  <tr>
+                     <th>Id</th>
+                     <th>Curso</th>
+                     <th>Precio</th>
+                     <th>Cupos</th>
+                     <th>Inscritos</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>1</td>
+                     <td>Programación</td>
+                     <td>$30</td>
+                     <td><span id="max1"></span></td>
+                     <td><span id="tot1"></span></td>
+                  </tr>
+                  <tr>
+                     <td>2</td>
+                     <td>Matemáticas</td>
+                     <td>$25</td>
+                     <td><span id="max2"></span></td>
+                     <td><span id="tot2"></span></td>
+                  </tr>
+                  <tr>
+                     <td>3</td>
+                     <td>Inglés</td>
+                     <td>$20</td>
+                     <td><span id="max3"></span></td>
+                     <td><span id="tot3"></span></td>
+                  </tr>
+               </tbody>
+               <tfoot>
+                  <tr>
+                     <th colspan="3">Total Descontado</th>
+                     <td colspan="2"><span id="descuentos"></span></td>
+                  </tr>
+               </tfoot>
+            </table>
+
+            <!-- === Inicio Botones ===-->
+            <div class="row m-2">
+               <div class="col-6 col-lg-6">
+                   <button id="add" class="btn btn-primary">Inscribir <i class="fa-solid fa-user-plus"></i></button>
+               </div>
+               <div class="col-6 col-lg-6">
+                 <button id="delete" class="btn btn-danger">Eliminar <i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+            <!-- === Fin Botones ===-->
+         </div>
+         <!-- ========== Fin Tabla Cursos ========== -->
+
+         <!-- ========== Inicio Tabla Aspirantes ========== -->
+         <div class="col-lg-7 col-md-12"> 
+            <table class="table table-bordered">
+               <thead>
+                  <tr class="table-info ">
+                     <th>Id Cliente</th>
+                     <th>Nombre</th>
+                     <th>Becado</th>
+                     <th>Curso</th>
+                     <th>Total</th>
+                  </tr>
+               </thead>
+               <tbody id="salida"> <!-- Repetidor -->
+                  <tr>
+                     <td class="id_asp"></td>
+                     <td class="nombre"></td>
+                     <td class="condicion text-capitalize "></td>
+                     <td class="curso"></td>
+                     <td class="totalPagar"></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         <!-- ========== Fin Tabla Aspirantes ========== -->
+      </div>
+   </div>
+   <!-- ========== Fin Tablas ========== -->
+
+   <!-- ===== Scripts ===== -->
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+           integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+           crossorigin="anonymous"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+           integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+           crossorigin="anonymous"></script>
+
+   <script src="js/academia.js"></script> <!-- ===== Script del ejercicio ===== -->
+   <!-- ===== Scripts ===== -->
+</body>
+</html>

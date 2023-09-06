@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <title>Mini Cine</title>
+</head>
+<body>
+
+   <!-- === Inicio Navbar === -->
+   <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="index.html">Inicio</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+               <li class="nav-item">
+                  <a class="nav-link" href="casaMoneda.html">Casa de Moneda</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="academia.html">Academia</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="miniCine.html">Mini Cine</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="abasto.html">Abasto</a>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <!-- === Fin Navbar === -->
+
+   <h2 class="text-center m-4">Mini Cine - ¿Cómo funciona?</h2>
+
+   <!-- ========== Inicio Instrucciones ========== -->
+   <div class="container">
+      <div class="row ">
+         <div class="col-lg-12 text-start">
+            <p>El Cine cuenta de tres salas que tienen una capacidad maxima respectiva <b>(Sala 1: 30 personas, Sala 2: 20 personas, Sala 3: 10 personas)</b>.Los cinefilos deben proporcionar sus datos<b> (id, sala a la cual quiere entrar, cantidad de niños y adultos)</b>. El cine cobra $1 por cada niño y $2 por cada adulto.</p>
+            <p>Al agregar un cinefilo, si los datos fueron introducidos correctamente, aparecerá inscrito en la tabla de la derecha. Si el usuario elige una sala que no es correcta (por ejemplo 4), introduce una cantidad superior a la disponible en una sala, o un id que ya existe, el programa le dirá que no puede completar la solicitud.</p>
+            <p>El Usuario puede agregar y eliminar cuantos cinefilos quiera. Para agregar solo debe precionar <i class="fa-solid fa-user-plus"></i>. Para eliminar un cinefilo debe precionar <i class="fa-solid fa-trash"></i> y proporcionar el id del mismo. En la tabla derecha se puede visualizar, además de los registros de los cinefilos, el total recaudado entre todos los cinefilos. Y en la izquierda las entradas disponibles y entradas vendidas en cada sala, el total de entradas que se vendió y la pelicula más taquillera.</p>
+         </div>
+      </div>
+   </div>
+   <!-- ========== Fin Instrucciones ========== -->
+
+   <!-- ========== Inicio Tablas ========== -->
+   <div class="container text-center">
+
+      <div class="row">
+         <!-- ========== Inicio Tabla Cursos ========== -->
+         <div class="col-lg-5">
+            <table class="table table-light table-striped-columns table-bordered">
+               <thead>
+                  <tr>
+                     <th colspan="2">Película más vendida</th>
+                     <td colspan="2"><span id="taquilla"></span></td>
+                  </tr>
+                  <tr>
+                     <th>Sala</th>
+                     <th>Película</th>
+                     <th>Entradas</th>
+                     <th>Vendidas</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>1</td>
+                     <td>Super Mario Bros</td>
+                     <td><span id="max1"></span></td>
+                     <td><span id="tot1"></span></td>
+                  </tr>
+                  <tr>
+                     <td>2</td>
+                     <td>Oppenheimer</td>
+                     <td><span id="max2"></span></td>
+                     <td><span id="tot2"></span></td>
+                  </tr>
+                  <tr>
+                     <td>3</td>
+                     <td>Sound of Freedom</td>
+                     <td><span id="max3"></span></td>
+                     <td><span id="tot3"></span></td>
+                  </tr>
+               </tbody>
+               <tfoot>
+                  <tr>
+                     <th colspan="3">Total Vendidas</th>
+                     <td colspan="1"><span id="entradas"></span></td>
+                  </tr>
+               </tfoot>
+            </table>
+
+            <!-- === Inicio Botones ===-->
+            <div class="row m-2">
+               <div class="col-6 col-lg-6">
+                   <button id="add" class="btn btn-primary">Agregar <i class="fa-solid fa-user-plus"></i></button>
+               </div>
+               <div class="col-6 col-lg-6">
+                 <button id="delete" class="btn btn-danger">Eliminar <i class="fa-solid fa-trash"></i></button>
+              </div>
+            </div>
+            <!-- === Fin Botones ===-->
+         </div>
+         <!-- ========== Fin Tabla Cursos ========== -->
+
+         <!-- ========== Inicio Tabla Aspirantes ========== -->
+         <div class="col-lg-7 col-md-12"> 
+            <table class="table table-bordered">
+               <thead>
+                  <tr class="table-info ">
+                     <th>Id Cinéfilo</th>
+                     <th>Película</th>
+                     <th>Niños</th>
+                     <th>Adultos</th>
+                     <th>Total</th>
+                  </tr>
+               </thead>
+               <tbody id="salida"> <!-- Repetidor -->
+                  <tr>
+                     <td class="id_cine"></td>
+                     <td class="peli"></td>
+                     <td class="nino"></td>
+                     <td class="adulto"></td>
+                     <td class="totalPagar"></td>
+                  </tr>
+               </tbody>
+               <tfoot class="table-danger">
+                  <tr>
+                     <th colspan="4">Total Recaudado</th>
+                     <td colspan="1"><span id="total"></span></td>
+                  </tr>
+               </tfoot>
+            </table>
+         </div>
+         <!-- ========== Fin Tabla Aspirantes ========== -->
+      </div>
+   </div>
+   <!-- ========== Fin Tablas ========== -->
+
+   <!-- ===== Scripts ===== -->
+
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+           integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+           crossorigin="anonymous"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+           integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+           crossorigin="anonymous"></script>
+
+   <script src="js/miniCine.js"></script> <!-- ===== Script del ejercicio ===== -->
+   <!-- ===== Scripts ===== -->
+</body>
+</html>
